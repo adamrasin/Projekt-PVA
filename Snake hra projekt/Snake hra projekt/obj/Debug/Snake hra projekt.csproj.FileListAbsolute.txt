@@ -1,0 +1,11 @@
+C:\Users\rasin\source\repos\Snake hra projekt\Snake hra projekt\bin\Debug\Snake hra projekt.exe.config
+C:\Users\rasin\source\repos\Snake hra projekt\Snake hra projekt\bin\Debug\Snake hra projekt.exe
+C:\Users\rasin\source\repos\Snake hra projekt\Snake hra projekt\bin\Debug\Snake hra projekt.pdb
+C:\Users\rasin\source\repos\Snake hra projekt\Snake hra projekt\obj\Debug\Snake hra projekt.csproj.AssemblyReference.cache
+C:\Users\rasin\source\repos\Snake hra projekt\Snake hra projekt\obj\Debug\Snake hra projekt.csproj.SuggestedBindingRedirects.cache
+C:\Users\rasin\source\repos\Snake hra projekt\Snake hra projekt\obj\Debug\Snake_hra_projekt.Form1.resources
+C:\Users\rasin\source\repos\Snake hra projekt\Snake hra projekt\obj\Debug\Snake_hra_projekt.Properties.Resources.resources
+C:\Users\rasin\source\repos\Snake hra projekt\Snake hra projekt\obj\Debug\Snake hra projekt.csproj.GenerateResource.cache
+C:\Users\rasin\source\repos\Snake hra projekt\Snake hra projekt\obj\Debug\Snake hra projekt.csproj.CoreCompileInputs.cache
+C:\Users\rasin\source\repos\Snake hra projekt\Snake hra projekt\obj\Debug\Snake hra projekt.exe
+C:\Users\rasin\source\repos\Snake hra projekt\Snake hra projekt\obj\Debug\Snake hra projekt.pdb
