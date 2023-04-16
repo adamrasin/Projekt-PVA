@@ -17,7 +17,7 @@ namespace Snake_hra_projekt
         int maxWidth;
         int maxheight;
         int skore;
-        int ńejSkore;
+        int nejSkore;
 
         Random rand = new Random();
         bool goLeft, goRight, goUp, goDown;
@@ -77,13 +77,74 @@ namespace Snake_hra_projekt
             RestartGame();
         }
 
-        private void TakeScreen(object sender, EventArgs e)
+        private PictureBox GetPicCanvas()
         {
-
+            return picCanvas;
         }
 
-        private void GameTimerEvent(object sender, EventArgs e)
+        private void GameTimerEvent(object sender, EventArgs e, PictureBox picCanvas)
         {
+            if (goLeft)
+            {
+                Settings.directions = "left";
+            }
+            if (goRight)
+            {
+                Settings.directions = "right";
+            }
+            if (goDown)
+            {
+                Settings.directions = "down";
+            }
+            if (goUp)
+            {
+                Settings.directions = "up";
+            }
+            for (int i = Snake.Count -1; i >= 0; i--)
+            {
+                if (i == 0)
+                {
+                    switch (Settings.directions)
+                    {
+                        case "left":
+                            Snake[i].X--;
+                            break;
+                        case "right":
+                            Snake[i].X++;
+                            break;
+                        case "down":
+                            Snake[i].Y++;
+                            break;
+                        case "up":
+                            Snake[i].Y--;
+                            break;
+                    }
+                    if (Snake[i].X < 0)
+                    {
+                        Snake[i].X = maxWidth;
+                    }
+                    if (Snake[i].X > maxWidth)
+                    {                                                           
+                        Snake[i].X = 0;
+                    }
+                    if (Snake[i].Y < 0)
+                    {
+                        Snake[i].Y = maxheight;
+                    }
+                    if (Snake[i].Y > maxheight)
+                    {
+                        Snake[i].Y = 0;
+                    }
+                }
+                else
+                {
+                    Snake[i].X = Snake[i - 1].X;
+                    Snake[i].Y = Snake[i - 1].Y;
+                }
+            }
+
+            picCanvas.Invalidate();
+
 
         }
 
@@ -101,12 +162,25 @@ namespace Snake_hra_projekt
                 {
                     snakeColour = Brushes.GreenYellow;
                 }
+                canvas.FillEllipse(snakeColour, new Rectangle
+                    (
+                    Snake[i].X * Settings.Width,
+                    Snake[i].Y * Settings.Height,
+                    Settings.Width, Settings.Height
+                    )
+                    );
             }
+            canvas.FillEllipse(Brushes.Pink, new Rectangle
+                (
+                Food.X * Settings.Width,
+                Food.Y * Settings.Height,
+                Settings.Width, Settings.Height
+                )
+                );
+        }
 
-
-
-
-
+        private void txtScore_Click_1(object sender, EventArgs e)
+        {
 
         }
 
@@ -116,7 +190,6 @@ namespace Snake_hra_projekt
             maxheight = picCanvas.Height / Settings.Height - 1;
             Snake.Clear();
             startButton .Enabled = false;
-            screenButton.Enabled = false;
             skore = 0;
             txtScore.Text = "SKÓRE: " + skore;
 

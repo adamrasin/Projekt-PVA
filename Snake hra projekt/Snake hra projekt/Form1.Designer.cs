@@ -32,7 +32,6 @@ namespace Snake_hra_projekt
         {
             this.components = new System.ComponentModel.Container();
             this.startButton = new System.Windows.Forms.Button();
-            this.screenButton = new System.Windows.Forms.Button();
             this.picCanvas = new System.Windows.Forms.PictureBox();
             this.txtScore = new System.Windows.Forms.Label();
             this.txtHighScore = new System.Windows.Forms.Label();
@@ -52,16 +51,6 @@ namespace Snake_hra_projekt
             this.startButton.UseVisualStyleBackColor = false;
             this.startButton.Click += new System.EventHandler(this.StartGame);
             // 
-            // screenButton
-            // 
-            this.screenButton.Location = new System.Drawing.Point(24, 91);
-            this.screenButton.Name = "screenButton";
-            this.screenButton.Size = new System.Drawing.Size(109, 59);
-            this.screenButton.TabIndex = 1;
-            this.screenButton.Text = "SCREEN";
-            this.screenButton.UseVisualStyleBackColor = true;
-            this.screenButton.Click += new System.EventHandler(this.TakeScreen);
-            // 
             // picCanvas
             // 
             this.picCanvas.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -75,25 +64,21 @@ namespace Snake_hra_projekt
             // txtScore
             // 
             this.txtScore.AutoSize = true;
-            this.txtScore.Location = new System.Drawing.Point(43, 179);
+            this.txtScore.Location = new System.Drawing.Point(46, 90);
             this.txtScore.Name = "txtScore";
             this.txtScore.Size = new System.Drawing.Size(56, 13);
             this.txtScore.TabIndex = 3;
             this.txtScore.Text = "SKÓRE: 0";
+            this.txtScore.Click += new System.EventHandler(this.txtScore_Click_1);
             // 
             // txtHighScore
             // 
             this.txtHighScore.AutoSize = true;
-            this.txtHighScore.Location = new System.Drawing.Point(21, 214);
+            this.txtHighScore.Location = new System.Drawing.Point(21, 124);
             this.txtHighScore.Name = "txtHighScore";
             this.txtHighScore.Size = new System.Drawing.Size(98, 13);
             this.txtHighScore.TabIndex = 4;
             this.txtHighScore.Text = "NEJVYŠŠÍ SKÓRE";
-            // 
-            // gameTimer
-            // 
-            this.gameTimer.Interval = 10000000;
-            this.gameTimer.Tick += new System.EventHandler(this.GameTimerEvent);
             // 
             // Form1
             // 
@@ -104,7 +89,6 @@ namespace Snake_hra_projekt
             this.Controls.Add(this.txtHighScore);
             this.Controls.Add(this.txtScore);
             this.Controls.Add(this.picCanvas);
-            this.Controls.Add(this.screenButton);
             this.Controls.Add(this.startButton);
             this.Name = "Form1";
             this.Text = "Snake";
@@ -119,7 +103,6 @@ namespace Snake_hra_projekt
         #endregion
 
         private System.Windows.Forms.Button startButton;
-        private System.Windows.Forms.Button screenButton;
         private System.Windows.Forms.PictureBox picCanvas;
         private System.Windows.Forms.Label txtScore;
         private System.Windows.Forms.Label txtHighScore;
