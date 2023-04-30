@@ -15,9 +15,9 @@ namespace Snake_hra_projekt
         private List<Circle> Snake = new List<Circle>();
         private Circle Food = new Circle();
         int maxWidth;
-        int maxheight;
-        int skore;
-        int nejSkore;
+        int maxHeight;
+        int score;
+        int highScore;
 
         Random rand = new Random();
         bool goLeft, goRight, goUp, goDown;
@@ -81,73 +81,6 @@ namespace Snake_hra_projekt
         {
             return picCanvas;
         }
-
-        private void GameTimerEvent(object sender, EventArgs e, PictureBox picCanvas)
-        {
-            if (goLeft)
-            {
-                Settings.directions = "left";
-            }
-            if (goRight)
-            {
-                Settings.directions = "right";
-            }
-            if (goDown)
-            {
-                Settings.directions = "down";
-            }
-            if (goUp)
-            {
-                Settings.directions = "up";
-            }
-            for (int i = Snake.Count -1; i >= 0; i--)
-            {
-                if (i == 0)
-                {
-                    switch (Settings.directions)
-                    {
-                        case "left":
-                            Snake[i].X--;
-                            break;
-                        case "right":
-                            Snake[i].X++;
-                            break;
-                        case "down":
-                            Snake[i].Y++;
-                            break;
-                        case "up":
-                            Snake[i].Y--;
-                            break;
-                    }
-                    if (Snake[i].X < 0)
-                    {
-                        Snake[i].X = maxWidth;
-                    }
-                    if (Snake[i].X > maxWidth)
-                    {                                                           
-                        Snake[i].X = 0;
-                    }
-                    if (Snake[i].Y < 0)
-                    {
-                        Snake[i].Y = maxheight;
-                    }
-                    if (Snake[i].Y > maxheight)
-                    {
-                        Snake[i].Y = 0;
-                    }
-                }
-                else
-                {
-                    Snake[i].X = Snake[i - 1].X;
-                    Snake[i].Y = Snake[i - 1].Y;
-                }
-            }
-
-            picCanvas.Invalidate();
-
-
-        }
-
         private void UpdatePictureBoxGraphics(object sender, PaintEventArgs e)
         {
             Graphics canvas = e.Graphics;
@@ -184,14 +117,95 @@ namespace Snake_hra_projekt
 
         }
 
+        private void txtHighScore_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TakeSnapShot(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GameTimerEvent(object sender, EventArgs e)
+        {
+            if (goLeft)
+            {
+                Settings.directions = "left";
+            }
+            if (goRight)
+            {
+                Settings.directions = "right";
+            }
+            if (goDown)
+            {
+                Settings.directions = "down";
+            }
+            if (goUp)
+            {
+                Settings.directions = "up";
+            }
+            for (int i = Snake.Count - 1; i >= 0; i--)
+            {
+                if (i == 0)
+                {
+                    switch (Settings.directions)
+                    {
+                        case "left":
+                            Snake[i].X--;
+                            break;
+                        case "right":
+                            Snake[i].X++;
+                            break;
+                        case "down":
+                            Snake[i].Y++;
+                            break;
+                        case "up":
+                            Snake[i].Y--;
+                            break;
+                    }
+                    if (Snake[i].X < 0)
+                    {
+                        Snake[i].X = maxWidth;
+                    }
+                    if (Snake[i].X > maxWidth)
+                    {
+                        Snake[i].X = 0;
+                    }
+                    if (Snake[i].Y < 0)
+                    {
+                        Snake[i].Y = maxHeight;
+                    }
+                    if (Snake[i].Y > maxHeight)
+                    {
+                        Snake[i].Y = 0;
+                    }
+
+                    if (Snake[i].X == Food.X && Snake[i].Y == Food.Y)
+                    {
+                        EatFood();
+                    }
+                }
+                else
+                {
+                    Snake[i].X = Snake[i - 1].X;
+                    Snake[i].Y = Snake[i - 1].Y;
+                }
+            }
+
+            picCanvas.Invalidate();
+
+        }
+
         private void RestartGame()
         {
             maxWidth = picCanvas.Width / Settings.Width - 1;
-            maxheight = picCanvas.Height / Settings.Height - 1;
+            maxHeight = picCanvas.Height / Settings.Height - 1;
             Snake.Clear();
             startButton .Enabled = false;
-            skore = 0;
-            txtScore.Text = "SKÓRE: " + skore;
+            snapButton.Enabled = false;
+            score = 0;
+            txtScore.Text = "Score: " + score;
 
             Circle head = new Circle { X = 10, Y = 5 };
             Snake.Add(head);
@@ -202,12 +216,26 @@ namespace Snake_hra_projekt
                 Snake.Add(body);
             }
 
-            Food = new Circle { X = rand.Next(2, maxWidth), Y = rand.Next(2, maxheight)};
+            Food = new Circle { X = rand.Next(2, maxWidth), Y = rand.Next(2, maxHeight)};
             gameTimer.Start();
         }
 
         private void EatFood()
         {
+            score += 1;
+            txtScore.Text = "SKORE: " + score;
+            Circle body = new Circle
+            {
+                X = Snake[Snake.Count - 1].X,
+                Y = Snake[Snake.Count - 1].Y
+        };
+
+            Snake.Add(body);
+            Food = new Circle { X = rand.Next(2, maxWidth), Y = rand.Next(2, maxHeight) };
+
+
+
+
 
         }
 
