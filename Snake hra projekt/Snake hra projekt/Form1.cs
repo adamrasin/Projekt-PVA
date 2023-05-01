@@ -17,7 +17,6 @@ namespace Snake_hra_projekt
         int maxWidth;
         int maxHeight;
         int score;
-        int highScore;
 
         Random rand = new Random();
         bool goLeft, goRight, goUp, goDown;
@@ -117,16 +116,6 @@ namespace Snake_hra_projekt
 
         }
 
-        private void txtHighScore_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TakeSnapShot(object sender, EventArgs e)
-        {
-
-        }
-
         private void GameTimerEvent(object sender, EventArgs e)
         {
             if (goLeft)
@@ -185,6 +174,16 @@ namespace Snake_hra_projekt
                     {
                         EatFood();
                     }
+                    for (int j = 1; j < Snake.Count; j++)
+                    {
+                        if (Snake[i].X == Snake[j].X && Snake[i].Y == Snake[j].Y)
+                        {
+                            GameOver();
+                        }
+                    }
+
+
+
                 }
                 else
                 {
@@ -203,9 +202,8 @@ namespace Snake_hra_projekt
             maxHeight = picCanvas.Height / Settings.Height - 1;
             Snake.Clear();
             startButton .Enabled = false;
-            snapButton.Enabled = false;
             score = 0;
-            txtScore.Text = "Score: " + score;
+            txtScore.Text = "SKÓRE: " + score;
 
             Circle head = new Circle { X = 10, Y = 5 };
             Snake.Add(head);
@@ -241,7 +239,8 @@ namespace Snake_hra_projekt
 
         private void GameOver()
         {
-
+            gameTimer.Stop();
+            startButton.Enabled = true;
         }
     }
 }

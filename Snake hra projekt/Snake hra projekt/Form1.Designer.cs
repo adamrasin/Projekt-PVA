@@ -34,9 +34,7 @@ namespace Snake_hra_projekt
             this.startButton = new System.Windows.Forms.Button();
             this.picCanvas = new System.Windows.Forms.PictureBox();
             this.txtScore = new System.Windows.Forms.Label();
-            this.txtHighScore = new System.Windows.Forms.Label();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
-            this.snapButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picCanvas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,35 +65,15 @@ namespace Snake_hra_projekt
             this.txtScore.AutoSize = true;
             this.txtScore.Location = new System.Drawing.Point(46, 90);
             this.txtScore.Name = "txtScore";
-            this.txtScore.Size = new System.Drawing.Size(47, 13);
+            this.txtScore.Size = new System.Drawing.Size(56, 13);
             this.txtScore.TabIndex = 3;
-            this.txtScore.Text = "Score: 0";
+            this.txtScore.Text = "SKORE: 0";
             this.txtScore.Click += new System.EventHandler(this.txtScore_Click_1);
-            // 
-            // txtHighScore
-            // 
-            this.txtHighScore.AutoSize = true;
-            this.txtHighScore.Location = new System.Drawing.Point(33, 125);
-            this.txtHighScore.Name = "txtHighScore";
-            this.txtHighScore.Size = new System.Drawing.Size(60, 13);
-            this.txtHighScore.TabIndex = 4;
-            this.txtHighScore.Text = "High Score";
-            this.txtHighScore.Click += new System.EventHandler(this.txtHighScore_Click);
             // 
             // gameTimer
             // 
-            this.gameTimer.Interval = 40;
+            this.gameTimer.Interval = 45;
             this.gameTimer.Tick += new System.EventHandler(this.GameTimerEvent);
-            // 
-            // snapButton
-            // 
-            this.snapButton.Location = new System.Drawing.Point(24, 156);
-            this.snapButton.Name = "snapButton";
-            this.snapButton.Size = new System.Drawing.Size(109, 60);
-            this.snapButton.TabIndex = 5;
-            this.snapButton.Text = "snap";
-            this.snapButton.UseVisualStyleBackColor = true;
-            this.snapButton.Click += new System.EventHandler(this.TakeSnapShot);
             // 
             // Form1
             // 
@@ -103,8 +81,6 @@ namespace Snake_hra_projekt
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(748, 725);
-            this.Controls.Add(this.snapButton);
-            this.Controls.Add(this.txtHighScore);
             this.Controls.Add(this.txtScore);
             this.Controls.Add(this.picCanvas);
             this.Controls.Add(this.startButton);
@@ -123,10 +99,8 @@ namespace Snake_hra_projekt
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.PictureBox picCanvas;
         private System.Windows.Forms.Label txtScore;
-        private System.Windows.Forms.Label txtHighScore;
         private System.Windows.Forms.Timer gameTimer;
         private EventHandler txtScore_Click;
-        private System.Windows.Forms.Button snapButton;
 
         public EventHandler Form1_Load { get; private set; }
     }
